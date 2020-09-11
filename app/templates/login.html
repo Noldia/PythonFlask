@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block title %}
+    {{ super() }}
+    Login
+{% endblock %}
+
+{% block content %}
+  <div id="login" class="container pt-5 pb-5">
+    <div class="row">
+      <div class="col">
+        <img src="{{ url_for('static', filename='images/loginImage.jpg') }}" alt="Imagen de tareas">
+        <a href='https://www.freepik.es/vectores/diseno'>Vector de Diseño creado por freepik - www.freepik.es</a>
+      </div>
+      <div class="col mt-5">
+        {{ wtf.quick_form(login_form) }}
+      </div>
+    </div>
+  </div>
+{% endblock %}

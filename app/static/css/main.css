@@ -1,0 +1,20 @@
+.navbar img {
+    max-width: 80px;
+}
+
+h1 {
+    text-align: center;
+    color: darkslateblue;
+}
+
+
+#login img {
+    max-width: 100%;
+}
+#hello {
+    text-align: right;
+}
+
+#hello img {
+    max-width: 100%;
+}

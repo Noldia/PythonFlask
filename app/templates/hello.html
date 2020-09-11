@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% import 'macros.html' as macros %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block title %}
+    {{ super() }}
+    Bienvenido
+
+{% endblock %}
+
+{% block content %}
+
+    {% if username %}
+        <h1>Bienvenid@, {{ username | capitalize }}</h1>
+    {% endif %}
+
+    {% if user_ip %}
+        <br>
+            <small>Tu IP es {{ user_ip }}</small>
+    {% else %}
+        <a href="{{ url_for('index') }}">optener IP</a>
+    {% endif %}
+
+    <div class="container mt-2">
+        <div class="row">
+            <div id="hello" class="col">
+                <img src="{{ url_for('static', filename='images/helloImage.jpg') }}" alt="imagen de tareas"></img>
+                <a href='https://www.freepik.es/vectores/banner'>Vector de Banner creado por katemangostar - www.freepik.es</a>
+            </div>
+            <div id="hello" class="col mt-5 pt-5">       
+                <h2>CREA UNA</h2>
+                <h2>NUEVA TAREA</h2>
+                {{ wtf.quick_form(todo_form) }}
+            </div>
+        </div> 
+    </div>
+    <div class="container mt-5 mb-5">
+        <div class="row">
+            <div class="col">
+                <div class="list-group">
+                    <a href="#" class="list-group-item list-group-item-action active">
+                        <h3>Lista de Tareas</h3>
+                    </a>
+                    <ul class="list-group">
+                        {% for todo in todos %}
+                            <h4>{{ macros.render_todo(todo, delete_form, update_form) }}</h4>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+
+
